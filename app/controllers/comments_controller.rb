@@ -23,6 +23,7 @@ class CommentsController < ApplicationController
   def create
     #binding.pry
     @comment = @video.comments.new(comment_params)
+    @comment.user_id = @user.id
     if @comment.save
       redirect_to video_path(@video)
       flash[:success] = 'Comment added'

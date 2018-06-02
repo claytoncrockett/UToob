@@ -16,3 +16,7 @@
 <%= link_to 'Back To Videos', videos_path %>
 <h1> <%= @video.title %> </h1>
 <iframe src="<%=@video.trailer%>" width=50% height=50%></iframe> 
+
+<% @video.comments.each do |comment| %>
+  <%= render 'comments/comment', { comment: comment } %>
+<% end %>
