@@ -7,6 +7,7 @@ class VideosController < ApplicationController
   end
 
   def show
+    @users = Video.find_name(@video)
   end
 
   def new

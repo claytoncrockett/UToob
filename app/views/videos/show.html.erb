@@ -20,8 +20,13 @@
 <br />
 
   <%= link_to 'Back To Videos', videos_path %>
-<% @video.comments.each do |comment| %>
+  <p><%= link_to 'Add Comment', new_video_comment_path(@video) %></p>
+<% @users.each do |comment| %>
+ 
   <%= render 'comments/comment', { comment: comment } %>
+ -  <%= comment.first_name %>
+    <%= link_to 'Delete Comment', video_comment_path(@video, comment), method: :delete %>
+    <%= link_to 'Edit Comment', edit_video_comment_path(@video, comment) %>
       </div>
   </div>
 

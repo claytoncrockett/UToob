@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = @video.comment
+    @comment = @video.comments
   end
 
   def new
@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    #binding.pry
     @comment = @video.comments.new(comment_params)
     @comment.user_id = @user.id
     if @comment.save
@@ -36,7 +35,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to [@video, @comment]
+      redirect_to video_path(@video)
       flash[:success] = 'Comment updated'
     else
       flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
@@ -47,7 +46,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     flash[:success] = 'Comment deleted'
-    redirect_to video_comment_path
+    redirect_to video_path(@video)
   end
 
 
