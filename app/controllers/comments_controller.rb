@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
+    @user = User.find(params[:user_id])
     render :form
   end
 
@@ -19,6 +20,7 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
     @comment = Comment.new(comment_params)
     if @comment.save
       redirect_to comments_path

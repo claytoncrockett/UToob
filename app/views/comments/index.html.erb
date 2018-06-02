@@ -1,7 +1,7 @@
 <h1>UToob Comments</h1>
-<%= link_to  "Create Comment", new_comment_path %>
+<%= link_to  "Create Comment", new_user_comment_path(@user) %>
 <ul>
   <% @comments.each do |comment|%>
-  <li><%= link_to  comment.name, comment_path(comments.id) %></li>
+  <li><%= link_to  comment.body, comment_path(comments.id) %></li>
   <%end%>
 </ul>
