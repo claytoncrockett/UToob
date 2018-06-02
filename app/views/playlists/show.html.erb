@@ -2,6 +2,6 @@
 
 <% @videos.each do |video| %>
  <% if video.playlist_id == @playlist.id %>
-  <%= video.title %>
+  <%= link_to video.title, video_path %>
   <% end %>
 <% end %>

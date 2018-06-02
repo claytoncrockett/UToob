@@ -54,7 +54,7 @@ private
     end
 
     def video_params
-      params.require(:video).permit(:title, :duration, :genre, :description, :trailer, :like, :dislike, :playlist)
+      params.require(:video).permit(:title, :duration, :genre, :description, :trailer, :like, :dislike, :playlist_id)
     end
     def set_video
       @video = Video.find(params[:id])

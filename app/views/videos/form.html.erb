@@ -28,6 +28,9 @@
   <%= f.label :trailer %>
   <%= f.text_field :trailer, required: true, autofocus: true %>
 
+  <%= f.label :playlist_id %>
+  <%= f.select :playlist_id, [['Playlist 1', 1], ['Playlist 2', 2]] %>
+
   <%= f.submit %>
   <%= link_to 'Back To Videos', videos_path %>
 </div>
