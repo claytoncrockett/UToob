@@ -20,7 +20,7 @@
 <br />
 
   <%= link_to 'Back To Videos', videos_path %>
-  <p><%= link_to 'Add Comment', new_video_comment_path(@video) %></p>
+  <p class="add"><%= link_to 'Add Comment', new_video_comment_path(@video) %></p>
 <% @users.each do |comment| %>
  
   <%= render 'comments/comment', { comment: comment } %>
