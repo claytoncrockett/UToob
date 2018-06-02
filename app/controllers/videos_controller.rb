@@ -46,7 +46,7 @@ private
       @playlist = Playlist.find(params[:id])
     end
 
-    def sub_params
+    def video_params
       params.require(:).permit(:name)
     end
 end
