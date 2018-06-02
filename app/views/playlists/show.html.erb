@@ -1,3 +1,7 @@
 <h1> <%= @playlist.title %> </h1>
 
-@playlist.
+<% @videos.each do |video| %>
+ <% if video.playlist_id == @playlist.id %>
+  <%= video.title %>
+  <% end %>
+<% end %>

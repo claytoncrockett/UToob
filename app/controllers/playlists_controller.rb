@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  before_action :set_videos, only: [:show]
 
   def index
     @playlists = current_user.playlists
@@ -45,6 +46,9 @@ class PlaylistsController < ApplicationController
   end
 
   private
+    def set_videos
+      @videos = Video.all
+    end
 
     def set_playlist
       @playlist = Playlist.find(params[:id])
