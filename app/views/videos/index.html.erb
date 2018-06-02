@@ -3,15 +3,21 @@
 <hr />
 <%= link_to 'Add Video', new_video_path %>
 <hr />
+<h4> Sort videos by the following genre </h4>
+
+<% @videos.each do |video| %>
+<%= video.genre %>
+<% end %>
+
 <% @videos.each do |video| %>
 <div>
 <strong><%= video.title %></strong>
 </div>
 
 <%= link_to 'Show Video', video_path(video) %>
-  |
+
 <%= link_to 'Edit video', edit_video_path(video) %>
-  |
+
 <%= link_to 'Destroy video', video, method: :delete %>
 <hr />
 <% end %>
