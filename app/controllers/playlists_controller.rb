@@ -1,4 +1,5 @@
 class PlaylistsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
   before_action :set_videos, only: [:show]
 
@@ -19,7 +20,7 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = current_user.playlists.create(playlist_params)
+    @playlist = current_user.playlists.new(playlist_params)
       if @playlist.save
         flash[:success] = 'Playlist Created'
         redirect_to user_playlists_path
