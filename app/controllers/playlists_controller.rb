@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, only: [:show, :edit, :update]
+  before_action :set_playlist, only: [:show, :edit, :update, :destroy]
 
   def index
     @playlists = current_user.playlists
@@ -40,6 +40,7 @@ class PlaylistsController < ApplicationController
 
   def destroy
     @playlist.destroy
+    flash[:success] = 'Playlist Destroyed'
     redirect_to playlists_path
   end
 

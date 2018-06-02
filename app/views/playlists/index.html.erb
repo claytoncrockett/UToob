@@ -3,9 +3,12 @@
 <hr />
 
 <h3> Here are all your playlists </h3>
-
+<ul>
 <% @playlists.each do |playlist| %>
-  <%= playlist.title %>
+  <li><%= link_to "#{playlist.title}", playlist_path(playlist) %>
+  <br /> <%= link_to 'Edit', edit_playlist_path(playlist) %>
+  <br /> <%= link_to 'Delete', playlist, method: :delete %></li>
 <% end %>
+<ul>
 
 

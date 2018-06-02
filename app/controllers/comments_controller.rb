@@ -25,7 +25,9 @@ class CommentsController < ApplicationController
     @comment = @video.comments.new(comment_params)
     if @comment.save
       redirect_to video_path(@video)
+      flash[:success] = 'Comment added'
     else
+      flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
       render :form
     end
   end
@@ -33,13 +35,16 @@ class CommentsController < ApplicationController
   def update
     if @comment.update(comment_params)
       redirect_to [@video, @comment]
+      flash[:success] = 'Comment updated'
     else
+      flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
       render :form
     end
   end
 
   def destroy
     @comment.destroy
+    flash[:success] = 'Comment deleted'
     redirect_to video_comment_path
   end
 

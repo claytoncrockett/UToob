@@ -21,22 +21,27 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
       if @video.save
+        flash[:success] = 'Video added'
         redirect_to videos_path
       else
+        flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
     render :new
     end
   end
 
   def update
     if @video.update(video_params)
+      flash[:success] = 'Video updated'
       redirect_to videos_path
     else
+      flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
       render :edit
     end
   end
 
   def destroy
     @video.destroy
+    flash[:success] = 'Video deleted'
     redirect_to videos_path
   end
 
