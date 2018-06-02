@@ -1,22 +1,28 @@
-<div>
 </br>
 <div class="ui list">
   <div class="item">
     <h1> <%= @video.title %> </h1>
     <hr />
-    <iframe src="<%=@video.trailer%>" width=50% height=50%></iframe> 
+    </div>
+
+    <iframe src="<%=@video.trailer%>" width=50% height=350px></iframe> 
     <div class="item">
     <%= @video.duration%>
+        </div>
     <div class="item">
     <%= @video.genre%>
+        </div>
     <div class="item">
     <%= link_to "#{@video.description}", @video.description %>
+        </div>
     <div class="item">
     <br />
 <br />
   <%= link_to 'Back To Videos', videos_path %>
 <% @video.comments.each do |comment| %>
   <%= render 'comments/comment', { comment: comment } %>
+      </div>
+  </div>
 
   
 <% end %>
