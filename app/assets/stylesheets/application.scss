@@ -5,3 +5,20 @@
   margin: 40px;
 }
 
+.backgroungimage {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('assets/coffeeback2.jpg');
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.flex {
+  display: flex !important;
+  justify-content: space-between !important; 
+}
+
+
+
+
+
