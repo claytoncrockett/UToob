@@ -1,5 +1,7 @@
 <h1><%= @video.id ? 'Edit Video' : 'Create Video' %></h1>
 
+<h3> <%= "To add a video, go to any video site and grab an embed code to input in the trailer field" %> </h2>
+
 <%= form_for @video, class: 'ui form' do |f| %>
 <div class="field">
 <%= f.label :title %>
