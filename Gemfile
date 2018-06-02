@@ -13,6 +13,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'semantic-ui-sass'
+gem 'jquery-rails'
+
 
 group :development, :test do
 gem 'pry'
