@@ -19,7 +19,6 @@ class VideosController < ApplicationController
   end
 
   def create  
-    binding.pry
     @video = Video.new(video_params)
 
       if @video.save
@@ -32,7 +31,6 @@ class VideosController < ApplicationController
   end
 
   def update
-    binding.pry
     if @video.update(video_params)
       flash[:success] = 'Video updated'
       redirect_to videos_path
