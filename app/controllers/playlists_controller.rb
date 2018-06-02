@@ -1,6 +1,8 @@
 class PlaylistsController < ApplicationController
+  before_action :set_playlist, only: [:show, :edit, :update]
+
   def index
-    @playlists = Department.all
+    @playlists = current_user.accounts
   end
 
   def show
@@ -16,18 +18,22 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = Playlist.new(playlist_params)
+    @playlist = current_user.playlist.new(playlist_params)
       if @playlist.save
+        flash[:success] = 'Playlist Created'
         redirect_to @playlist
       else
+        flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
         render :form
       end
   end
 
   def update
     if @playlist.update(playlist_params)
-      redirect_to @playlist
+      flash[:success] = 'Playlist Updated'
+      redirect_to playlists_path
     else
+      flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
       render :form
     end
   end
@@ -38,6 +44,10 @@ class PlaylistsController < ApplicationController
   end
 
   private
+
+    def set_playlist
+      @playlist = Playlist.find(params[:id])
+    end
 
     def playlist_params
       params.require(:playlist).permit(:title)
