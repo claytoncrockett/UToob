@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+    devise_for :users
+  
   resources :videos do
     resources :comments
   end
@@ -13,5 +15,5 @@ Rails.application.routes.draw do
   end
   resources :comments
 
-  devise_for :users
+
 end

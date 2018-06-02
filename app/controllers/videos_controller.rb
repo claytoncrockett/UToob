@@ -1,16 +1,16 @@
 class VideosController < ApplicationController
-  before_action :set_playlist, only: [:show, :update, :edit, :destroy]
+ before_action :set_video, only: [:show, :update, :edit, :destroy]
 
   
   def index
-    @videos = @playlist.videos
+    @videos = Video.all
   end
 
   def show
   end
 
   def new
-    @video = @playlist.videos.new
+    @video = Video.new
     render :form
   end
 
@@ -19,9 +19,9 @@ class VideosController < ApplicationController
   end
 
   def create
-    @video = @playlist.videos.new(video_params)
+    @video = Video.new(video_params)
       if @video.save
-        redirect_to [@playlist, @video]
+        redirect_to videos_path
       else
     render :new
     end
@@ -29,7 +29,7 @@ class VideosController < ApplicationController
 
   def update
     if @video.update(video_params)
-      redirect_to [@playlist, @video]
+      redirect_to videos_path
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class VideosController < ApplicationController
 
   def destroy
     @video.destroy
-    redirect_to playlist_videos_path
+    redirect_to videos_path
   end
 
 private
@@ -47,6 +47,9 @@ private
     end
 
     def video_params
-      params.require(:).permit(:name)
+      params.require(:video).permit(:title, :duration, :genre, :description, :trailer, :like, :dislike)
+    end
+    def set_video
+      @video = Video.find(params[:id])
     end
 end
