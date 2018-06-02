@@ -1,4 +1,4 @@
 class Playlist < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  has_many :videos
+  belongs_to :user
+  has_many :videos, dependent: :destroy
 end
