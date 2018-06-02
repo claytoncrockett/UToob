@@ -25,8 +25,8 @@ class VideosController < ApplicationController
         redirect_to videos_path
       else
         flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
-    render :new
-    end
+        render :form
+      end
   end
 
   def update
@@ -35,7 +35,7 @@ class VideosController < ApplicationController
       redirect_to videos_path
     else
       flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
-      render :edit
+      render :form
     end
   end
 
@@ -52,7 +52,7 @@ private
     end
 
     def video_params
-      params.require(:video).permit(:title, :duration, :genre, :description, :trailer, :like, :dislike)
+      params.require(:video).permit(:title, :duration, :genre, :description, :trailer, :like, :dislike, :playlist)
     end
     def set_video
       @video = Video.find(params[:id])
