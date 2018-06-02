@@ -6,9 +6,11 @@
 <ul>
 <% @playlists.each do |playlist| %>
   <li><%= link_to "#{playlist.title}", playlist_path(playlist) %>
-  <br /> <%= link_to 'Edit', edit_playlist_path(playlist) %>
-  <br /> <%= link_to 'Delete', playlist, method: :delete %></li>
+  <br /> <%= link_to 'Edit', edit_playlist_path(playlist) %> 
+  |
+  <%= link_to 'Delete', playlist, method: :delete %></li>
+  <hr />
 <% end %>
-<ul>
+</ul>
 
 

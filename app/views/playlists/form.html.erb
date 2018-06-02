@@ -1,8 +1,7 @@
 <h1><%= @playlist.id ? 'Edit playlist' : 'Create playlist' %></h1>
 <hr />
-<%= form_for [current_user, @playlist] do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title, required: true, autofocus: true %>
-
-<%= f.submit %>
+  <%= form_for [current_user, @playlist] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, required: true, autofocus: true %>
+  <%= f.submit %>
 <% end %>
