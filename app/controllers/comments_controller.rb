@@ -1,17 +1,18 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
+  before_action :set_video
 
   def index
     @comments = Comment.all
   end
 
   def show
-    @comment = @comment.video
+    @comment = @video.comment
   end
 
   def new
-    @comment = Comment.new
-    @user = User.find(params[:user_id])
+    @comment = @video.comments.new
     render :form
   end
 
@@ -20,10 +21,10 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @comment = Comment.new(comment_params)
+    #binding.pry
+    @comment = @video.comments.new(comment_params)
     if @comment.save
-      redirect_to comments_path
+      redirect_to video_path(@video)
     else
       render :form
     end
@@ -31,7 +32,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to @comment
+      redirect_to [@video, @comment]
     else
       render :form
     end
@@ -39,11 +40,19 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to comments_path
+    redirect_to video_comment_path
   end
 
 
   private
+
+  def set_video
+    @video = Video.find(params[:video_id])
+  end
+
+  def set_user
+    @user = current_user
+  end
 
   def set_comment
     @comment = Comment.find(params[:id])

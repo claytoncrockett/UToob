@@ -5,7 +5,8 @@
     <%= @video.genre%>
     <%= @video.description %>
     <%= @video.duration%>
-    <%= @video.trailer%>
 </div>
 </br>
 <%= link_to 'Back To Videos', videos_path %>
+<h1> <%= @video.title %> </h1>
+<iframe src="<%=@video.trailer%>" width=50% height=50%></iframe> 

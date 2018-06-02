@@ -1,8 +1,9 @@
 <h1><%= @comment.id ? 'Edit Comment' : 'Create Comment' %></h1>
 
-<%= form_for @comment do |f| %>
+<%= form_for [@video, @comment] do |f| %>
 <%= f.label :body %>
-<%= f.text_field :body, required: true, autofocus: true %>
+<%= f.text_area :body, required: true, autofocus: true %>
+<% @comment.user_id = @user.id %>
 
 <%= f.submit %>
 <% end %>
