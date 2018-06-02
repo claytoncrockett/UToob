@@ -1,5 +1,7 @@
 <%= link_to 'View all videos', videos_path %>
-<%= link_to 'Your Playlists', playlists_path %>
+<% if user_signed_in? %>
+<%= link_to 'Your Playlists', user_playlists_path(current_user) %>
+<% end %>
 <% if user_signed_in? %>
   <%= button_to 'Log Out', destroy_user_session_path, method: :delete %>
 <% else %>

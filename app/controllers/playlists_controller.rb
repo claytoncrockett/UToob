@@ -2,7 +2,7 @@ class PlaylistsController < ApplicationController
   before_action :set_playlist, only: [:show, :edit, :update]
 
   def index
-    @playlists = current_user.accounts
+    @playlists = current_user.playlists
   end
 
   def show
@@ -18,10 +18,10 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = current_user.playlist.new(playlist_params)
+    @playlist = Playlist.create(playlist_params)
       if @playlist.save
         flash[:success] = 'Playlist Created'
-        redirect_to @playlist
+        redirect_to user_playlists_path
       else
         flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
         render :form
