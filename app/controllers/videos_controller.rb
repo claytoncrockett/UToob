@@ -18,18 +18,21 @@ class VideosController < ApplicationController
     render :form
   end
 
-  def create
+  def create  
+    binding.pry
     @video = Video.new(video_params)
+
       if @video.save
-        flash[:success] = 'Video added'
+        # flash[:success] = 'Video added'
         redirect_to videos_path
       else
-        flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
+        # flash[:error] = "Error: #{@playlist.errors.full_messages.join("\n")}"
         render :form
       end
   end
 
   def update
+    binding.pry
     if @video.update(video_params)
       flash[:success] = 'Video updated'
       redirect_to videos_path

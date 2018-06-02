@@ -1,8 +1,6 @@
 <h1><%= @video.id ? 'Edit Video' : 'Create Video' %></h1>
-<form class="ui form">
-  <div class="field">
-<%= form_for @video do |f| %>
-<form class="ui form">
+
+<%= form_for @video, class: 'ui form' do |f| %>
 <div class="field">
 <%= f.label :title %>
 <%= f.text_field :title, required: true, autofocus: true %>
