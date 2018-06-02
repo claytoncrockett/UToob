@@ -3,5 +3,5 @@
   <%= form_for [current_user, @playlist] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title, required: true, autofocus: true %>
-  <%= f.submit %>
+  <%= f.submit nil, class: 'ui button' %>
 <% end %>
