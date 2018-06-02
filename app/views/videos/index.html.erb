@@ -1,11 +1,17 @@
 
-<h1> videos </h1>
-<p><%= link_to 'New video', new_video_path %></p>
+<h1> Videos </h1>
+<hr />
+<%= link_to 'Add Video', new_video_path %>
+<hr />
 <% @videos.each do |video| %>
-<p>
-  <%= video.title %>
-  <%= link_to 'Show video', video_path(video) %>
-  <%= link_to 'Edit video', edit_video_path(video) %>
-  <%= link_to 'Destroy video', video, method: :delete %>
-  </p>
+<div>
+<strong><%= video.title %></strong>
+</div>
+
+<%= link_to 'Show Video', video_path(video) %>
+  |
+<%= link_to 'Edit video', edit_video_path(video) %>
+  |
+<%= link_to 'Destroy video', video, method: :delete %>
+<hr />
 <% end %>
